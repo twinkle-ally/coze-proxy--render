@@ -1,9 +1,18 @@
 import express from 'express';
 import fetch from 'node-fetch';
+import cors from 'cors'; // ✅ 新增
 
 const app = express();
+
+// ✅ 允许 GitHub Pages 域名访问你的中转接口（更安全）
+app.use(cors({
+  origin: 'https://twinkle-ally.github.io'
+}));
+
+// 解析 JSON 请求体
 app.use(express.json());
 
+// 路由
 app.post('/api/coze', async (req, res) => {
   const { query } = req.body;
   const COZE_KEY = process.env.COZE_KEY;
@@ -32,4 +41,6 @@ app.post('/api/coze', async (req, res) => {
   }
 });
 
-app.listen(3000, () => console.log('Proxy API running on port 3000'));
+// 监听端口
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Proxy API running on port ${PORT}`));
