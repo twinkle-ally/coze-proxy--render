@@ -1,6 +1,7 @@
 {
   "name": "coze-proxy-render",
   "version": "1.0.0",
+  "description": "Proxy server for Coze API",
   "main": "index.js",
   "type": "module",
   "scripts": {
