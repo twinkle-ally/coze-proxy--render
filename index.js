@@ -21,7 +21,7 @@ app.post('/api/coze', async (req, res) => {
   if (!query) return res.status(400).json({ error: 'Missing query' });
 
   try {
-    const response = await fetch("https://api.coze.com/open_api/v2/chat", {
+    const response = await fetch("https://api.coze.cn/v3/chat", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
